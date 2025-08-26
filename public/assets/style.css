@@ -1,0 +1,369 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.config-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border-left: 4px solid #007bff;
+}
+
+.config-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.upload-area {
+    border: 3px dashed #007bff;
+    border-radius: 15px;
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    background: #f8f9ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    background: #e8f0ff;
+    transform: translateY(-2px);
+}
+
+.upload-area.dragover {
+    background: #e8f0ff;
+    border-color: #0056b3;
+}
+
+.upload-icon {
+    font-size: 4em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.upload-text {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.upload-info {
+    color: #666;
+    font-size: 1em;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.preview-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.preview-card:hover {
+    transform: translateY(-5px);
+}
+
+.preview-content {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9ecef;
+}
+
+.preview-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pdf-icon {
+    font-size: 4em;
+    color: #dc3545;
+}
+
+.file-info {
+    text-align: center;
+}
+
+.file-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    word-break: break-word;
+    font-size: 0.9em;
+}
+
+.file-size {
+    color: #666;
+    font-size: 0.8em;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+    background: #c82333;
+    transform: scale(1.1);
+}
+
+.actions {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e9ecef;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 600;
+}
+
+.results {
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 5px solid #28a745;
+    background: #d4edda;
+}
+
+.results.error {
+    border-left-color: #dc3545;
+    background: #f8d7da;
+}
+
+.results.warning {
+    border-left-color: #ffc107;
+    background: #fff3cd;
+}
+
+.results h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.json-viewer {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    overflow: auto;
+    max-height: 400px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.result-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.status-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9em;
+    z-index: 1000;
+}
+
+.status-online {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-offline {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.retry-info {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.retry-countdown {
+    font-weight: bold;
+    color: #856404;
+}
