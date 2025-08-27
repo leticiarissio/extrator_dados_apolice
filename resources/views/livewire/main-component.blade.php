@@ -13,5 +13,5 @@
 
     @livewire('retry-info')
 
-    <div id="results"></div>
+    @livewire('results')
 </div>

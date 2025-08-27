@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
 {
     public function submit()
     {
+        $textPdf = session('texto');
+        $caminho = session('caminho');
+
         $response = Http::withHeaders([
             "Content-Type" => "application/json"
         ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=". env('GEMINI_API_KEY'), [
@@ -16,29 +20,27 @@ class MainController extends Controller
                 [
                     "parts" => [
                         [
-                            "text" => "Explain how AI works in a few words"
+                            "text" => "Organize em topicos json os principais dados do pdf e retorne sem comentários" . $textPdf
                         ]
-                        // ,
-                        // [
-                        //     'file_data' => [
-                        //         'mime_type' => 'application/pdf',
-                        //         'file_uri' => $fileUri
-                        //     ]
-                        // ]
+                        
                     ]
                 ]
             ]
         ]);
 
+        // limpa session
+        session()->forget('texto');
+        session()->forget('caminho');
+        
         if($response->successful()){
-            $text = $response->json()['candidates'][0]['content']['parts'][0]['text'];
+            $texto = $response->json()['candidates'][0]['content']['parts'][0]['text'];
+            $erro = false;
         }
         else {
-            $text = 'something is wrong';
+            $texto = 'Algo deu errado :(';
+            $erro = true;
         }
 
-        // dd($response->json());
-
-        echo $text;
+        return ['resultado' => $texto, 'erro' => $erro];
     }
 }
