@@ -6,13 +6,15 @@ use Livewire\Component;
 
 class Loading extends Component
 {
-    public $extrairDados = '';
+    public $displayEnviado = '';
+    public $texto = '';
     
-    protected $listeners = ['extrairDados'];
+    protected $listeners = ['loading'];
 
-    public function extrairDados($extrairDados)
+    public function loading($display, $texto)
     {
-        $this->extrairDados = $extrairDados;
+        $this->displayEnviado = $display;
+        $this->texto = $texto;
     }
     public function render()
     {

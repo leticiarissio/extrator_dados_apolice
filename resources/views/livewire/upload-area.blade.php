@@ -1,6 +1,6 @@
 <div class="upload-area" id="uploadArea" x-on:click="$refs.arquivo.click()">
     <div class="upload-icon">📁</div>
-    <div class="upload-text">Clique para selecionar arquivos ou arraste e solte aqui</div>
+    <div class="upload-text">Clique para selecionar o arquivo</div>
     <div class="upload-info">Formato: PDF (máx. 5MB)</div>
     <input type="file" 
            x-ref="arquivo" 

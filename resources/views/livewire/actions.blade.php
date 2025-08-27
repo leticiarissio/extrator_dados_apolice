@@ -14,7 +14,11 @@
     >
         🗑️ Limpar Tudo
     </button>
-    <button class="btn btn-success" id="testBtn">
+    <button 
+        class="btn btn-success" 
+        id="testBtn"
+        wire:click="testarConexao"
+    >
         🔗 Testar Conexão
     </button>
 </div>
