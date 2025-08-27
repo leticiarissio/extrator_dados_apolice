@@ -10,7 +10,7 @@ class UploadArea extends Component
     use WithFileUploads;
     public $arquivo;
     public $nomeArquivo = '';
-    
+
     public function updatedArquivo()
     {
         if ($this->arquivo) {

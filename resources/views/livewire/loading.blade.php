@@ -1,4 +1,4 @@
-<div class="loading" id="loading">
+<div class="loading" id="loading" style="display: {{ $extrairDados ?  'block' : 'none'}}">
     <div class="spinner"></div>
-    <div class="loading-text">Processando arquivos com Claude AI...</div>
+    <div class="loading-text">Enviando para Claude AI... (pode demorar até 3 minutos)</div>
 </div>
