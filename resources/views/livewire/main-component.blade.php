@@ -5,18 +5,13 @@
 
     @livewire('upload-area')
 
-    <div class="preview-grid" id="previewGrid"></div>
+    @livewire('preview-card')
 
     @livewire('actions')
 
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <div class="loading-text">Processando arquivos com Claude AI...</div>
-    </div>
+    @livewire('loading')
 
-    <div id="retryInfo" class="retry-info" style="display: none;">
-        <p>⏳ Claude está sobrecarregado. Tentando novamente em <span class="retry-countdown" id="retryCountdown">0</span> segundos...</p>
-    </div>
+    @livewire('retry-info')
 
     <div id="results"></div>
 </div>

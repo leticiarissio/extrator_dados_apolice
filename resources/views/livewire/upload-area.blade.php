@@ -2,8 +2,37 @@
     <div class="upload-icon">📁</div>
     <div class="upload-text">Clique para selecionar arquivos ou arraste e solte aqui</div>
     <div class="upload-info">Formato: PDF (máx. 5MB)</div>
-    <input type="file" x-ref="arquivo" id="fileInput" accept="application/pdf">
+    <input type="file" 
+           x-ref="arquivo" 
+           id="fileInput" 
+           accept="application/pdf"
+           wire:model="arquivo"
+    >
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {{-- <div x-data="{ files: [] }">
     <div class="upload-area" id="uploadArea" @click="$refs.input.click()"
