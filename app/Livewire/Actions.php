@@ -46,6 +46,16 @@ class Actions extends Component
     {    
         // Emite evento
         $this->dispatch('loading', display: 'block', texto: 'Testando conexão...');
+
+        $controller = new MainController();
+
+        $resultado = $controller->testarConexao();
+
+        // Emite evento
+        if ($resultado) {
+            $this->dispatch('resultado', $resultado);
+            $this->dispatch('loading', display: 'none', texto: '');
+        }
     }
 
     public function render()

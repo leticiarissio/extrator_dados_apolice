@@ -11,11 +11,10 @@ class MainController extends Controller
     public function submit()
     {
         $textPdf = session('texto');
-        $caminho = session('caminho');
 
         $response = Http::withHeaders([
             "Content-Type" => "application/json"
-        ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=". env('GEMINI_API_KEY'), [
+        ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key". env('GEMINI_API_KEY'), [
             "contents" => [
                 [
                     "parts" => [
@@ -37,10 +36,40 @@ class MainController extends Controller
             $erro = false;
         }
         else {
-            $texto = 'Algo deu errado :(';
+            $texto = "❌ Erro na conexão: " . $response->status();;
             $erro = true;
         }
 
         return ['resultado' => $texto, 'erro' => $erro];
+    }
+
+    public function testarConexao()
+    {
+        $response = Http::withHeaders([
+            "Content-Type" => "application/json"
+        ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=". env('GEMINI_API_KEY'), [
+            "contents" => [
+                [
+                    "parts" => [
+                        [
+                            "text" => "Responda apenas 'Conexão OK' se você conseguir ler esta mensagem."
+                        ]
+                        
+                    ]
+                ]
+            ]
+        ]);
+        
+        if($response->successful()){
+            $resposta = $response->json()['candidates'][0]['content']['parts'][0]['text'];
+            $texto = "✅ Conexão estabelecida com sucesso! Resposta: " . $resposta;
+            $erro = false;
+        }
+        else {
+            $texto = "❌ Erro na conexão: " . $response->status();
+            $erro = true;
+        }
+
+        return ["resultado"=> $texto,"erro"=> $erro];
     }
 }
